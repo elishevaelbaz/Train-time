@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Train Time!</title>
+
+	<!-- jQuery -->
+	<script src="https://code.jquery.com/jquery.js"></script>
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Materialize -->
+	<!-- Compiled and minified CSS -->
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"> -->
+
+	<!-- Compiled and minified JavaScript -->
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script> -->
+
+<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+	<!-- link to firebase-->	
+	<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+	<script>
+
+	</script>
+</head>
+<body>
+
+
+	<h1>Train name: <span id="train-name"></span> </h1>
+
+	<button id="submit-button">Submit</button>
+
+
+	<div class="container">
+		<!-- Page Content goes here -->
+
+		<div class="row">
+			<div class="col-md-10">
+				<h1>HEADER</h1>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+
+					<div class="panel panel-default">
+						<!-- Default panel contents -->
+						<div class="panel-heading">Train Schedule</div>
+
+						<table class="table table-striped" id="train-table">
+							<thead>
+								<tr>
+									<th>Train Name</th>
+									<th>Destination</th>
+									<th>Frequency (min)</th>
+									<th>Next Arrival</th>
+									<th>Minutes Away</th>
+								</tr>
+							</thead>
+
+							<tbody>
+								<tr>
+									<td>Thomas</td>
+									<td>England</td>
+									<td>?</td>
+									<td>3:30</td>
+									<td>?</td>
+								</tr>
+								<!-- <tr>
+									<td>Alan</td>
+									<td>Jellybean</td>
+									<td>$3.76</td>
+									<td>Eclair</td>
+									<td>$0.87</td>
+								</tr>
+								<tr>
+									<td>Jonathan</td>
+									<td>Lollipop</td>
+									<td>$7.00</td>
+									<td>Eclair</td>
+									<td>$0.87</td>
+								</tr> -->
+							</tbody>
+						</table>
+
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+
+<div class="row">
+				<div class="col-md-12">
+
+					<div class="panel panel-default">
+						<!-- Default panel contents -->
+						<div class="panel-heading">Add a Train</div>
+
+		<form role="form">
+			<div class="form-group">
+				<label for="name-input">Train Name</label>
+				<input class="form-control" id="name-input" type="text">
+			</div>
+			<div class="form-group">
+				<label for="destination-input">Destination</label>
+				<input class="form-control" id="destination-input" type="text">
+			</div>
+			<div class="form-group">
+				<label for="time-input">First Train Time (HH:mm - military time)</label>
+				<input class="form-control" id="time-input" type="time">
+			</div>
+			<div class="form-group">
+				<label for="frequency-input">Frequency (min)</label>
+				<input class="form-control" id="frequency-input" type="text"></input>
+			</div>
+			<button class="btn btn-default" id="add-train" type="submit">Submit</button>
+		</form>
+	</div>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+	<!-- Script -->
+	<script src="assets/javascript/logic.js"></script>
+
+
+
+	
+</body>
+</html>
