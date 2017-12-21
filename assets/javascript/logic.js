@@ -8,15 +8,9 @@ var config = {
   storageBucket: "train-time-db250.appspot.com",
   messagingSenderId: "1828143593"
 };
+
 firebase.initializeApp(config);
 var database = firebase.database();
-
-var name = "Thomas (the steam engine)";
-  var destination = "England";
-  var time = "11:27";
-  var frequency = 38;
-
-
 
 $("#add-train").on("click", function(event) {
 
@@ -27,8 +21,8 @@ $("#add-train").on("click", function(event) {
   var time = $("#time-input").val().trim();
   var frequency = $("#frequency-input").val().trim();
 
-
-  if ((!name)||(!time)||(!frequency)){
+  // requires all the fields except name
+  if ((!destination)||(!time)||(!frequency)){
     
     $('#myModal').modal("show");
     return;
@@ -73,11 +67,11 @@ $("#add-train").on("click", function(event) {
 
       // First Time (pushed back the frequency number of years 
       //to make sure it comes before current time)
-      var firstTimeConverted = moment(firstTime, "hh:mm").subtract(tFrequency, "years");
+      var firstTimeConverted = moment(firstTime, "HH:mm").subtract(tFrequency, "years");
       console.log(firstTimeConverted);
 
       // Current Time
-      var currentTime = moment().format("hh:mm");
+      var currentTime = moment().format("HH:mm");
       console.log("currentTime: " + currentTime)
 
       // Difference between the times
@@ -93,7 +87,7 @@ $("#add-train").on("click", function(event) {
 
       // Next Train
       var calcNextTrain = moment().add(tMinutesTillTrain, "minutes");
-      var nextTrain = moment(calcNextTrain).format("hh:mm")
+      var nextTrain = moment(calcNextTrain).format("HH:mm")
       // console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
 
 

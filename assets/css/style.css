@@ -32,5 +32,12 @@ tr{
 
 .panel-heading{
 	background-color: #6cc3e0;
+
+	/*try this --- #33b5e5*/
+
 	/*#81cbe4*/
+}
+
+.jumbotron{
+	text-align:center;
 }

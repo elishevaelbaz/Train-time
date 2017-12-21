@@ -29,12 +29,15 @@
 <body>
 
 	<div class="container">
+
 		<!-- Page Content goes here -->
 
 		<div class="jumbotron">
+
   <h1>It's Train Time!</h1>
   <p>Chug-a-Chug-a Choo-Choo!</p>
 </div>
+
 <!-- 
 		<div class="row">
 			<div class="col-md-12" id="pageHeader" >
@@ -91,11 +94,11 @@
 			</div>
 			<div class="form-group">
 				<label for="time-input">First Train Time (HH:mm - military time)</label>
-				<input class="form-control" id="time-input" type="time">
+				<input class="form-control" id="time-input" type="text">
 			</div>
 			<div class="form-group">
 				<label for="frequency-input">Frequency (min)</label>
-				<input class="form-control" id="frequency-input" type="text"></input>
+				<input class="form-control" id="frequency-input" type="number"></input>
 			</div>
 			<button class="btn btn-info" id="add-train" type="submit">Submit</button>
 		</form>
@@ -114,7 +117,7 @@
         <h4 class="modal-title">Try Again!</h4>
       </div>
       <div class="modal-body">
-        <p>You need to fill in the name, time and frequency of the train before submitting</p>
+        <p>You need to fill in the destination, time and frequency of the train before submitting</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
@@ -122,25 +125,6 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-
-
-<div class="modal fade" id="myModal2" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Try Again!</h4>
-      </div>
-      <div class="modal-body">
-        <p>Frequency needs to be a number</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
 
 
 	<!-- Script -->
