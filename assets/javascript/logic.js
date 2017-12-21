@@ -1,8 +1,26 @@
 
+// Initialize Firebase
+var config = {
+  apiKey: "AIzaSyAPJcdNtadAvEHx-S9rJrDpzIi0Sue74aI",
+  authDomain: "train-time-db250.firebaseapp.com",
+  databaseURL: "https://train-time-db250.firebaseio.com",
+  projectId: "train-time-db250",
+  storageBucket: "train-time-db250.appspot.com",
+  messagingSenderId: "1828143593"
+};
+firebase.initializeApp(config);
+var database = firebase.database();
+
+var name = "Thomas (the steam engine)";
+  var destination = "England";
+  var time = "11:27";
+  var frequency = 38;
+
+
+
 $("#add-train").on("click", function(event) {
 
   event.preventDefault();
-
 
   var name = $("#name-input").val().trim();
   var destination = $("#destination-input").val().trim();
@@ -24,58 +42,32 @@ $("#add-train").on("click", function(event) {
 
   }
 
-  console.log(name);
-  console.log(destination);
-  console.log(time);
-  console.log(frequency);
 
-  //Replaces the content in the "recent-member" div with the new info
-  var newRow = $("<tr>")
-  $("#tbody").append(newRow)
+  // Code for the push
+      database.ref().push({
 
-
-  var trains = JSON.parse(localStorage.getItem("trains"));
-
-  if (trains == null){
-    trains = [];
-  }
-
-  var newTrain = {
-    name: name,
-    destination: destination, 
-    time: time,
-    frequency: frequency
-  }
-
-  trains.push(newTrain);
-
-  localStorage.setItem("trains", JSON.stringify(trains));
-
-  updatePage();
-
-});
+        name: name,
+        destination: destination,
+        time:time,
+        frequency, frequency
+        // dateAdded: firebase.database.ServerValue.TIMESTAMP
+     });
+    });    
 
 
-function updatePage(){
+// Firebase watcher + initial loader HINT: This code behaves similarly to .on("value")
+    database.ref().on("child_added", function(childSnapshot) {
 
-  var trains = JSON.parse(localStorage.getItem("trains"));
-
-  
-
-  if (trains == null){
-    trains = [];
-  }
-
-  
-    $("#tbody").empty();
-
-    for (var i = 0; i < trains.length; i++) {
+      // Log everything that's coming out of snapshot
+      console.log(childSnapshot.val().name);
+      console.log(childSnapshot.val().destination);
+      console.log(childSnapshot.val().time);
+      console.log(childSnapshot.val().frequency);
 
 
-      //calculate the next train time and in how many minutes
-      var tFrequency = trains[i].frequency;
+      var tFrequency = childSnapshot.val().frequency;
 
-      var firstTime = trains[i].time;
+      var firstTime = childSnapshot.val().time;
 
       console.log(tFrequency)
 
@@ -98,32 +90,39 @@ function updatePage(){
 
       // Minute Until Train
       var tMinutesTillTrain = tFrequency - tRemainder;
-      console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
 
       // Next Train
       var calcNextTrain = moment().add(tMinutesTillTrain, "minutes");
       var nextTrain = moment(calcNextTrain).format("hh:mm")
       // console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
 
+
+
+
+      // full list of items to the well
       var newTrain = $("<tr>");
-      newTrain.append("<td>" + trains[i].name + "</td>");
-      newTrain.append("<td>" + trains[i].destination + "</td>");
-      newTrain.append("<td>" + trains[i].frequency + "</td>");
+      newTrain.append("<td>" + childSnapshot.val().name + "</td>");
+      newTrain.append("<td>" + childSnapshot.val().destination + "</td>");
+      newTrain.append("<td>" + childSnapshot.val().frequency + "</td>");
       newTrain.append("<td>" + nextTrain + "</td>");
       newTrain.append("<td>" + tMinutesTillTrain + "</td>");
 
       $("#tbody").append(newTrain);
 
-      //clear the textboxes
+       //clear the textboxes
       $("#name-input").val("");
       $("#destination-input").val("");
       $("#time-input").val("");
       $("#frequency-input").val("");
-    }
-  }
+      
+    // Handle the errors
+    }, function(errorObject) {
+      console.log("Errors handled: " + errorObject.code);
+    });
+
+    
 
 
-  updatePage();
 
 
 

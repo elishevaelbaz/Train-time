@@ -1,5 +1,5 @@
 *{
-	/*box-sizing: border-box;*/
+	box-sizing: border-box;
 }
 
 
@@ -12,12 +12,22 @@ form{
 	padding:3%;
 }
 
-body{
+/*body{*/
 
+}
+
+#pageHeader{
+	/*text-align:center;
+	margin-left:20%;
+	margin-bottom:15px;*/
 }
 
 #train-table{
 	border: solid 2px grey;
+}
+
+tr{
+	padding-left:3px;
 }
 
 .panel-heading{
