@@ -3,10 +3,26 @@ $("#add-train").on("click", function(event) {
 
   event.preventDefault();
 
+
   var name = $("#name-input").val().trim();
   var destination = $("#destination-input").val().trim();
   var time = $("#time-input").val().trim();
   var frequency = $("#frequency-input").val().trim();
+
+
+  if ((!name)||(!time)||(!frequency)){
+    
+    $('#myModal').modal("show");
+    return;
+  }
+
+//make sure the user put in a number
+  if (isNaN(parseInt(frequency))){
+
+    $('#myModal2').modal("show");
+    return;
+
+  }
 
   console.log(name);
   console.log(destination);
@@ -97,6 +113,12 @@ function updatePage(){
       newTrain.append("<td>" + tMinutesTillTrain + "</td>");
 
       $("#tbody").append(newTrain);
+
+      //clear the textboxes
+      $("#name-input").val("");
+      $("#destination-input").val("");
+      $("#time-input").val("");
+      $("#frequency-input").val("");
     }
   }
 
