@@ -1,43 +1,23 @@
+
 *{
 	box-sizing: border-box;
 }
 
-
-/*.form-group{
-	margin-left:3%;
-	margin-right:3%;
-}*/
-
 form{
 	padding:3%;
-}
-
-/*body{*/
-
-}
-
-#pageHeader{
-	/*text-align:center;
-	margin-left:20%;
-	margin-bottom:15px;*/
 }
 
 #train-table{
 	border: solid 2px grey;
 }
 
-tr{
-	padding-left:3px;
-}
 
 .panel-heading{
 	background-color: #6cc3e0;
 
-	/*try this --- #33b5e5*/
-
-	/*#81cbe4*/
 }
 
 .jumbotron{
+	margin-top:5%;
 	text-align:center;
 }
