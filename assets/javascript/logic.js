@@ -43,35 +43,22 @@ $("#add-train").on("click", function(event) {
 // Firebase watcher + initial loader HINT: This code behaves similarly to .on("value")
 database.ref().on("child_added", function(childSnapshot) {
 
-  // Log everything that's coming out of snapshot
-  console.log(childSnapshot.val().name);
-  console.log(childSnapshot.val().destination);
-  console.log(childSnapshot.val().time);
-  console.log(childSnapshot.val().frequency);
-
-
   var tFrequency = childSnapshot.val().frequency;
 
   var firstTime = childSnapshot.val().time;
 
-  console.log(tFrequency)
-
   // First Time (pushed back the frequency number of years 
   //to make sure it comes before current time)
   var firstTimeConverted = moment(firstTime, "HH:mm").subtract(tFrequency, "years");
-  console.log(firstTimeConverted);
 
   // Current Time
   var currentTime = moment().format("HH:mm");
-  console.log("currentTime: " + currentTime)
 
   // Difference between the times
   var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
-  console.log("DIFFERENCE IN TIME: " + diffTime);
 
   // Time apart (remainder)
   var tRemainder = diffTime % tFrequency;
-  console.log(tRemainder);
 
   // Minute Until Train
   var tMinutesTillTrain = tFrequency - tRemainder;
